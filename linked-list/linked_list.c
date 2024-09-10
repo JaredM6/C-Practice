@@ -28,20 +28,13 @@ ListNode* make_new_node()
 
 size_t get_size_of_list()
 {   
-    // Even any nodes?
-    if (head == NULL)
-    {
-        return 0;
-    }
-
-    // Iterate the list
+    // Iterate the list (at least one node)
     ListNode* currentNode = head;
     size_t listSize = 0;
-    
-    // Iterate from back to front
+        
     while (currentNode != NULL)
     {
-        currentNode = currentNode->next;
+        currentNode = currentNode->prev;
         ++listSize;
     }
 
