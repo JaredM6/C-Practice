@@ -1,9 +1,7 @@
 #include <stdio.h>
-#include "linked-list.h"
+#include "linked_list.h"
 
 int test_suite();
-int test_making_a_node(ListNode* listNodePtr);
-int test_adding_node_to_list(ListNode* listNodePtr);
 
 
 int main()
