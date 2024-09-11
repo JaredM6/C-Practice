@@ -45,6 +45,9 @@ int test_suite()
     } printf("Add to list pass!\n");
 
 
+    // LIST STATUS: [testNode]
+
+
     // Check that the size is 1 after adding
     if (get_size_of_list() != 1)
     {
@@ -76,6 +79,9 @@ int test_suite()
         printf("Add node 2 test failed!\n");
         return -1;
     } printf("Add node 2 to list pass!\n");
+
+
+    // LIST STATUS: [testNode] <-> [testNode2]
 
 
     // Check that the size is 2 after adding
