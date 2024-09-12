@@ -59,3 +59,43 @@ int add_node(ListNode* listNode)
     head = listNode;
     return 0;
 }
+
+int delete_node(ListNode* listNode)
+{
+    if (listNode == NULL)
+    {
+        return 0;
+    }
+
+    // Is this the head? And is it also not the tail (size of 1)?
+    if ((listNode == head) && (listNode != tail))
+    {
+        // Set the node behind this one to be NULL
+        listNode->prev->next = NULL;
+        head = listNode->prev;
+        // Done, now free the node
+        free(listNode);
+        return 0;
+    }
+
+    // Is this node tail? And is it also not the head?
+    if ((listNode != head) && (listNode == tail))
+    {
+        listNode->next->prev = NULL;
+        tail = listNode->prev;
+        free(listNode);
+        return 0;
+    }
+
+    // It must be in the middle if we reached here
+    // Set the node behind this node's next node to be the deleting node's next node
+    // [a] <-> [b] <-> [c]   --> delete b -->  [a] <-> [c]     
+    listNode->prev->next = listNode->next;
+    // Same thing as above, but for the other direction
+    listNode->next->prev = listNode->prev;
+
+    // Free and return
+    free(listNode);
+    return 0;
+    
+}
