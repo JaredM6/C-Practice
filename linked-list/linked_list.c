@@ -69,14 +69,16 @@ int delete_node(ListNode* listNode)
     }
 
     // Check if it is both the head and the tail (only node in the list)
-    if ((listNode == head) && (listNode == tail))
+    else if (get_size_of_list() == 1)
     {
+        head = NULL;
+        tail = NULL;
         free(listNode);
         return 0;
     }
 
     // Check if this node is the head, and set the one behind it to the head after updating links
-    if ((listNode == head) && (listNode != tail))
+    else if ((listNode == head) && (listNode != tail))
     {
         // Set the node behind this one to be NULL
         listNode->prev->next = NULL;
@@ -86,7 +88,7 @@ int delete_node(ListNode* listNode)
     }
 
     // Check if this node is the tail, and set the one behind it to the head after updating links
-    if ((listNode != head) && (listNode == tail))
+    else if ((listNode != head) && (listNode == tail))
     {
         listNode->next->prev = NULL;
         tail = listNode->next;
