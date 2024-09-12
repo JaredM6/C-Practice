@@ -70,7 +70,7 @@ int test_suite()
     } printf("Check not size 2 pass!\n");
 
 
-    // Check that the second node is added to the list
+    // Check that the second node is added to the list correctly
     if ((add_node(testNode2) != 0) && (testNode2->prev == testNode))
     {
         printf("Add node 2 test failed!\n");
