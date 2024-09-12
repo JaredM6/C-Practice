@@ -113,5 +113,27 @@ int test_suite()
     } printf("Node has no connections (good)!\n");
 
 
+    // LIST STATUS: [testNode2]
+
+
+    // Check that we can delete the only node in the list
+    // Check that the first node created gets deleted successfully
+    if (delete_node(testNode2))
+    {
+        printf("Node not deleted!\n");
+        return -1; 
+    } printf("Deletion passed, confirming deletion...\n");
+
+    // Check that the size of the list is 1 after deletion for confirmation
+    if (get_size_of_list() != 0)
+    {
+        printf("Size of list not 0!\n");
+        return -1; 
+    } printf("Node deleted, size 0 check pass!\n");
+
+
+    // LIST STATUS: (empty)
+
+
     return 0;
 }
