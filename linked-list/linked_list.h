@@ -13,5 +13,6 @@ int init_list();
 ListNode* make_new_node();
 size_t get_size_of_list();
 int add_node(ListNode* listNode);
+int delete_node(ListNode* listNode);
 
 #endif

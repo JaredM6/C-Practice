@@ -62,33 +62,40 @@ int add_node(ListNode* listNode)
 
 int delete_node(ListNode* listNode)
 {
+    // Check for bad use
     if (listNode == NULL)
     {
         return 0;
     }
 
-    // Is this the head? And is it also not the tail (size of 1)?
+    // Check if it is both the head and the tail (only node in the list)
+    if ((listNode == head) && (listNode == tail))
+    {
+        free(listNode);
+        return 0;
+    }
+
+    // Check if this node is the head, and set the one behind it to the head after updating links
     if ((listNode == head) && (listNode != tail))
     {
         // Set the node behind this one to be NULL
         listNode->prev->next = NULL;
         head = listNode->prev;
-        // Done, now free the node
         free(listNode);
         return 0;
     }
 
-    // Is this node tail? And is it also not the head?
+    // Check if this node is the tail, and set the one behind it to the head after updating links
     if ((listNode != head) && (listNode == tail))
     {
         listNode->next->prev = NULL;
-        tail = listNode->prev;
+        tail = listNode->next;
         free(listNode);
         return 0;
     }
 
     // It must be in the middle if we reached here
-    // Set the node behind this node's next node to be the deleting node's next node
+    // Set the node behind this node's 'next node' to be the deleting node's 'next node'
     // [a] <-> [b] <-> [c]   --> delete b -->  [a] <-> [c]     
     listNode->prev->next = listNode->next;
     // Same thing as above, but for the other direction
@@ -97,5 +104,4 @@ int delete_node(ListNode* listNode)
     // Free and return
     free(listNode);
     return 0;
-    
 }
