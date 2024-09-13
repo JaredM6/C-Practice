@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "linked_list.h"
+#include "linked-list.h"
 
 int test_suite();
 

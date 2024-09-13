@@ -1,5 +1,5 @@
 test: clean
-	gcc -Wall linked_list.c test.c -o test
+	gcc -Wall linked_list.c list-tests.c -o list-tests
 
 clean:
-	rm -rf test
+	rm -rf list-tests

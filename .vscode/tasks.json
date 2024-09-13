@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build",
+        "type": "shell",
+        "command": "gcc",
+        "args": [
+          "-g",  // Generate debugging information
+          "/home/jmmalone/programming/repos/C-Practice/linked-list/list-tests.c",  // Path to your C source file
+          "/home/jmmalone/programming/repos/C-Practice/linked-list/linked-list.c",
+          "-o", "/home/jmmalone/programming/repos/C-Practice/linked-list/list-tests"  // Output binary file
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": ["$gcc"],
+        "detail": "Generated task for compiling C program"
+      }
+    ]
+  }
+  
