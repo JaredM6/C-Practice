@@ -1,21 +1,44 @@
 #include <stdio.h>
 #include "linked-list.h"
 
-int test_suite();
+int test_suite_initial_tests();
+int test_suite_advanced_tests();
 
 
 int main()
 {
-    if (test_suite() == 0)
+    printf("\n--------------------------------\n");
+    printf("---- Starting test suite 1! ----\n");
+    printf("--------------------------------\n");
+    if (test_suite_initial_tests() != 0)
     {
-        printf("All tests PASS!\n");
-        return 0;
+        printf("First test suite fail!\n");
+        return -1;
     }
-    printf("FAIL!\n");
-    return -1;
+
+    printf("\n--------------------------------\n");
+    printf("---- Starting test suite 2! ----\n");
+    printf("--------------------------------\n");
+
+    if (test_suite_advanced_tests() != 0)
+    {
+        printf("Second test suite fail!\n");
+        return -1;
+    }
+    
+    printf("All tests pass!\n");
+    return 0;
 }
 
-int test_suite()
+/*
+This test suite will:
+- Test node creation
+- Test size checking
+- Test node addition to the linked list
+- Test node deletion (head and tail)
+- Test deleting until linked list is empty
+*/
+int test_suite_initial_tests()
 {
     // Node for testing
     ListNode* testNode;
@@ -135,5 +158,51 @@ int test_suite()
     // LIST STATUS: (empty)
 
     
+    return 0;
+}
+
+/*
+This test suite will:
+- Test node deletion of a middle node
+- Setting and accessing data within a node
+*/
+int test_suite_advanced_tests()
+{
+    ListNode* listNode1 = make_new_node();
+    ListNode* listNode2 = make_new_node();
+    ListNode* listNode3 = make_new_node();
+
+    add_node(listNode1);
+    add_node(listNode2);
+    add_node(listNode3);
+
+    if ((listNode2->prev != listNode1) && (listNode2->next != listNode3))
+    {
+        printf("Ordering is wrong\n");
+        return -1; 
+    } printf("Ordering passed!\n");
+
+
+    // Check that the middle node is deleted just fine
+    if (delete_node(listNode2))
+    {
+        printf("Middle node not deleted!\n");
+        return -1; 
+    } printf("Deletion passed, confirming deletion...\n");
+
+    // Check that the size of the list is 1 after deletion for confirmation
+    if (get_size_of_list() != 2)
+    {
+        printf("Size of list not 2!\n");
+        return -1; 
+    } printf("Middle node deleted, size 2 check pass, checking ordering...\n");
+
+    if ((listNode1->next != listNode3) && (listNode2->prev!= listNode1))
+    {
+        printf("Ordering is wrong\n");
+        return -1; 
+    } printf("Ordering passed!\n");
+
+
     return 0;
 }
